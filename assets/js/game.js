@@ -3,9 +3,9 @@
  if(!photo||!img||!spots)return;
  const levelEl=document.querySelector('#trainingLevel'),countEl=document.querySelector('#trainingCount'),taskEl=document.querySelector('#trainingTask'),log=document.querySelector('#trainingLog'),next=document.querySelector('#trainingNext'),stamp=document.querySelector('#trainingStamp');
  const stages=[
-  {name:'L1 / 闭店层',task:'确认闭店区域的通道边界与临时隔离位置。',img:'https://upload.wikimedia.org/wikipedia/commons/1/1f/Gfp-corridor-of-shopping-mall.jpg',pts:[{x:34,y:60,w:18,h:20,label:'通道边界 / 已确认'},{x:70,y:42,w:16,h:22,label:'隔离位置 / 已确认'}]},
-  {name:'L2 / 收场区',task:'确认收场区的临时堆放位与人员通行边界。',img:'https://upload.wikimedia.org/wikipedia/commons/0/0e/Sugarloaf_Mills_Food_Court.jpg',pts:[{x:18,y:56,w:18,h:19,label:'临时堆放位 / 已确认'},{x:63,y:48,w:19,h:22,label:'通道边界 / 已确认'}]},
-  {name:'L3 / 未开放路线',task:'确认后勤路线的转折点和服务区方向。完成后读取当班设备编号。',img:'https://upload.wikimedia.org/wikipedia/commons/9/97/Sugarloaf_Mills_south_corridor.jpg',pts:[{x:24,y:30,w:19,h:27,label:'路线转折 / 已确认'},{x:67,y:39,w:17,h:25,label:'服务区方向 / 已确认'}]}
+  {name:'L1 / 闭店层',task:'确认闭店区域的通道边界与临时隔离位置。',img:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Lakeline%20Mall%20Concourse%206.jpg',pts:[{x:34,y:60,w:18,h:20,label:'通道边界 / 已确认'},{x:70,y:42,w:16,h:22,label:'隔离位置 / 已确认'}]},
+  {name:'L2 / 收场区',task:'确认收场区的临时堆放位与人员通行边界。',img:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Sunway%20Giza%20Mall%20interior%2C%20Dataran%20Sunway%20%28221022%29%202.jpg',pts:[{x:18,y:56,w:18,h:19,label:'临时堆放位 / 已确认'},{x:63,y:48,w:19,h:22,label:'通道边界 / 已确认'}]},
+  {name:'L3 / 未开放路线',task:'确认后勤路线的转折点和服务区方向。完成后读取当班设备编号。',img:'https://commons.wikimedia.org/wiki/Special:Redirect/file/HK%20KCD%20%E5%95%9F%E5%BE%B7%20Kai%20Tak%20AIRSIDE%20Shopping%20Mall%20void%20escalators%20July%202024%20R12S%2001.jpg',pts:[{x:24,y:30,w:19,h:27,label:'路线转折 / 已确认'},{x:67,y:39,w:17,h:25,label:'服务区方向 / 已确认'}]}
  ];
  let level=0,found=new Set(),offline=false;
  function render(){

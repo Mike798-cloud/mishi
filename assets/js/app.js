@@ -70,7 +70,7 @@
     const closeSurvey=()=>{modal.classList.remove('show');modal.setAttribute('aria-hidden','true');survey.querySelector('button[type="submit"]')?.focus()};
     document.querySelector('#surveyBack')?.addEventListener('click',closeSurvey);
     modal.addEventListener('keydown',e=>{if(e.key==='Escape')closeSurvey()});
-    document.querySelector('#surveyAccept')?.addEventListener('click',()=>{JNC.mergeSurvey(JSON.parse(modal.dataset.payload||'{}'));location.href='participant-login.html'});
+    document.querySelector('#surveyAccept')?.addEventListener('click',()=>{JNC.mergeSurvey(JSON.parse(modal.dataset.payload||'{}'));const w=window.open('participant-login.html','_blank','noopener');if(!w)location.href='participant-login.html'});
   }
 
   // monitoring minigame + refresh restore
