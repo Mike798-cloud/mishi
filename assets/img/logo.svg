@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd234"/><stop offset="1" stop-color="#ff6b2c"/></linearGradient></defs>
+  <rect width="640" height="180" rx="18" fill="#10151e"/>
+  <path d="M36 32h568v116H36z" fill="url(#g)" stroke="#0e1116" stroke-width="8"/>
+  <g fill="#10151e" font-family="Arial,Microsoft YaHei,sans-serif" font-weight="900" text-anchor="middle">
+    <text x="320" y="95" font-size="58" letter-spacing="10">今晚不清场</text>
+    <text x="320" y="128" font-size="17" letter-spacing="7">AFTER HOURS CHALLENGE</text>
+  </g>
+</svg>

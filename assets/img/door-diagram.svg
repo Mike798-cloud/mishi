@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
+<rect width="800" height="520" fill="#1a2028"/><g fill="none" stroke="#9ba9b9" stroke-width="5">
+<rect x="215" y="70" width="330" height="380"/><rect x="255" y="110" width="250" height="300"/><path d="M505 150h90v80h-90M545 230v96M545 326h85"/>
+<rect x="72" y="140" width="110" height="170"/><path d="M182 225h73"/>
+</g><g fill="#d6dee8" font-family="Arial,Microsoft YaHei,sans-serif" font-size="22">
+<text x="78" y="120">控制箱 K2</text><text x="525" y="135">磁锁</text><text x="525" y="362">机械释放</text><text x="287" y="486">B17 单人房门结构示意</text>
+</g><g fill="#ffb24c"><circle cx="127" cy="185" r="12"/><circle cx="127" cy="250" r="12"/><circle cx="588" cy="364" r="12"/></g>
+</svg>
