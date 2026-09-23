@@ -8,19 +8,6 @@
   const page=document.body.dataset.page||'index';
   state.visited[page]=Date.now(); save(state);
 
-  const flags=()=>{
-    const s=load();
-    return {
-      survey:!!s.survey,p1:!!s.p1,game:!!s.game||localStorage.getItem('jnc_game_complete')==='1',
-      staff:!!s.staff,monitor:!!s.monitor,route:localStorage.getItem('jnc_route')==='1',
-      sync:localStorage.getItem('jnc_sync')==='1',incident:!!s.incident,
-      timeline:localStorage.getItem('jnc_timeline')==='1',unlock:!!s.unlock,ending:!!s.ending
-    };
-  };
-  const progress=()=>{const f=flags();let p=5;if(f.survey)p=12;if(f.p1)p=22;if(f.game)p=36;if(f.staff)p=48;if(f.monitor)p=62;if(f.route)p=72;if(f.sync)p=80;if(f.incident)p=88;if(f.timeline)p=92;if(f.unlock)p=96;if(f.ending)p=100;return p};
-  const prog=progress();
-  const bar=document.querySelector('.progress-bar'); if(bar) bar.style.width=prog+'%';
-  const cap=document.querySelector('.progress-caption'); if(cap) cap.textContent=`调查进度 ${prog}%`;
 
   window.JNC={
     get:()=>load(),
@@ -30,7 +17,7 @@
   };
 
   document.querySelectorAll('[data-reset]').forEach(el=>el.addEventListener('click',()=>{
-    if(confirm('这会清除本浏览器里的调查进度、问卷和小游戏记录。确定重新开始吗？')) JNC.reset();
+    if(confirm('这会清除本机恢复会话、已打开的系统状态和填写记录。确定重新开始吗？')) JNC.reset();
   }));
   window.addEventListener('storage',()=>{state=load()});
 
@@ -70,7 +57,7 @@
     const closeSurvey=()=>{modal.classList.remove('show');modal.setAttribute('aria-hidden','true');survey.querySelector('button[type="submit"]')?.focus()};
     document.querySelector('#surveyBack')?.addEventListener('click',closeSurvey);
     modal.addEventListener('keydown',e=>{if(e.key==='Escape')closeSurvey()});
-    document.querySelector('#surveyAccept')?.addEventListener('click',()=>{JNC.mergeSurvey(JSON.parse(modal.dataset.payload||'{}'));const w=window.open('participant-login.html','_blank','noopener');if(!w)location.href='participant-login.html'});
+    document.querySelector('#surveyAccept')?.addEventListener('click',()=>{JNC.mergeSurvey(JSON.parse(modal.dataset.payload||'{}'));modal.querySelector('.modal-card').innerHTML='<h2>预登记已保存</h2><p>现场安排会在正式报名开放后重新确认；当前第 30 场仍处于暂停状态。</p><div class="modal-actions"><button type="button" id="surveyDone" class="primary">知道了</button></div>';document.querySelector('#surveyDone')?.addEventListener('click',()=>{modal.classList.remove('show');modal.setAttribute('aria-hidden','true')})});
   }
 
   // monitoring minigame + refresh restore
@@ -95,20 +82,23 @@
     }));
   }
 
-  // incident timeline reconstruction; restore solved state on refresh
+  // incident timeline reconstruction: first merge chronology, then audit the official wording.
   const timelinePuzzle=document.querySelector('[data-timeline-puzzle]');
   if(timelinePuzzle){
     const target=['exit','lock','contact','smoke','call','open'];
-    let dragging=null; const status=document.querySelector('#timelineStatus'), next=document.querySelector('#timelineSolved');
+    let dragging=null, orderOK=false;
+    const status=document.querySelector('#timelineStatus'), audit=document.querySelector('#timelineAudit'), next=document.querySelector('#timelineSolved');
+    const confirmBtn=document.querySelector('#timelineConfirm'), auditMsg=document.querySelector('#timelineAuditMsg');
     const items=()=>[...timelinePuzzle.querySelectorAll('[data-event]')];
-    const markSolved=()=>{timelinePuzzle.classList.add('solved');if(status)status.textContent='MERGE OK / 值班、电话与门禁记录已按统一基准合并。';next?.classList.remove('hidden')};
+    const showOrderOK=()=>{orderOK=true;timelinePuzzle.classList.add('solved');if(status)status.textContent='记录顺序已统一。还需要核对正式简报中的“首次发现”时间。';audit?.classList.remove('hidden')};
+    const markSolved=()=>{showOrderOK();document.querySelector('input[name="auditConclusion"][value="pre0301"]')?.setAttribute('checked','checked');if(auditMsg)auditMsg.textContent='校核通过：02:41 的退出请求与随后磁锁复位失败，均早于正式简报的 03:01。';next?.classList.remove('hidden')};
     if(localStorage.getItem('jnc_timeline')==='1'){
       target.forEach(id=>{const el=timelinePuzzle.querySelector(`[data-event="${id}"]`);if(el)timelinePuzzle.appendChild(el)});markSolved();
     }
     const check=()=>{
       const order=items().map(x=>x.dataset.event);
-      if(order.join('|')===target.join('|')){markSolved();localStorage.setItem('jnc_timeline','1')}
-      else if(status){status.textContent='待合并：不同系统时间尚未统一。拖动记录行或使用上下箭头调整顺序。'}
+      if(order.join('|')===target.join('|')) showOrderOK();
+      else {orderOK=false;timelinePuzzle.classList.remove('solved');audit?.classList.add('hidden');next?.classList.add('hidden');if(status)status.textContent='待合并：不同来源的记录还没有按发生先后排好。拖动记录行或使用上下箭头调整。'}
     };
     items().forEach(el=>{
       el.setAttribute('draggable','true');
@@ -122,18 +112,16 @@
         check();
       }));
     });
+    confirmBtn?.addEventListener('click',()=>{
+      if(!orderOK)return;
+      const v=document.querySelector('input[name="auditConclusion"]:checked')?.value;
+      if(v==='pre0301'){
+        localStorage.setItem('jnc_timeline','1');
+        if(auditMsg)auditMsg.textContent='校核通过：02:41 的退出请求与随后磁锁复位失败，均早于正式简报的 03:01。';
+        next?.classList.remove('hidden');
+      } else if(auditMsg){auditMsg.textContent=v?'这条说法与已合并的原始记录不一致。':'先选择一项再核对。'}
+    });
     if(localStorage.getItem('jnc_timeline')!=='1') check();
-  }
-
-  // later staff cache echoes the player's own pre-registration
-  const surveyEcho=document.querySelector('#surveyEcho');
-  if(surveyEcho){
-    const st=load(),d=st.surveyData||{};
-    if(st.survey){
-      const note=d.note?escapeHTML(d.note):'（未填写备注）';
-      const health=Array.isArray(d.health)?d.health.join('、'):(d.health||'未选择');
-      surveyEcho.innerHTML=`<b>${escapeHTML(d.nickname||'未填写称呼')}</b><br>环境项：${escapeHTML(d.fear||'未选择')}<br>集合点处理：${escapeHTML(d.separate||'未选择')}<br>身体情况：${escapeHTML(health)}<br>备注：${note}<br><span class="small">状态：等待现场组查看</span>`;
-    } else surveyEcho.textContent='未找到本机的下一期预登记缓存。';
   }
 
   function escapeHTML(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
