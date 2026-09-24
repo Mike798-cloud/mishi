@@ -6,3 +6,5 @@ body.public{background:#d9d1bc;font-family:Arial,"Microsoft YaHei",sans-serif;co
 .public-note{margin:12px 0;padding:9px 10px;border:1px dashed #8f876e;background:#fff8d9;font-size:12px}.public-note h2{font-size:14px;margin:0 0 5px}.public-note p{margin:.45em 0}
 
 .public-lost-attachment{height:152px;margin:12px 0 18px;border:2px dashed #91866d;background:#d8d0bc;padding:28px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#4f493d;box-shadow:3px 3px 0 rgba(60,50,32,.14)}.public-lost-attachment b{font:700 14px Courier New,monospace}.public-lost-attachment span{margin:8px 0 4px;font-weight:900;color:#8a2d22}.public-lost-attachment small{max-width:520px;line-height:1.55}
+
+.public-page-title{font-size:24px;margin:16px 0 8px}.public-data-table tbody tr:nth-child(4){background:#f5f0d9}.public-data-table td:nth-child(4){font-family:Consolas,monospace}
