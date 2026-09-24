@@ -4,3 +4,5 @@ body.final-theme{background:#aaa69d;color:#292824;font-family:"Songti SC","Noto 
 @media(max-width:620px){.final-theme .site-shell{padding:30px 18px 72px}.final-title h1{font-size:31px}.audio-row{grid-template-columns:72px 1fr}.archive-end{display:block}}
 
 .final-close{margin:42px 0 0;text-align:right}.final-close a{font:10px Arial,"Microsoft YaHei";color:#666;text-decoration:none;border-bottom:1px solid #888}.final-close a:hover{color:#222}.final-doc hr{border:0;border-top:1px dashed #aaa}
+
+.final-scan{margin:0;background:#d7d2c7;border:1px solid #817c73;padding:7px}.final-scan img{display:block;width:100%;height:auto;filter:saturate(.72) contrast(.98)}.final-scan figcaption{font:9px/1.55 Arial,"Microsoft YaHei";color:#6e6960;padding:5px 2px 0}.hospital-note{font:11px/1.75 Arial,"Microsoft YaHei";color:#5f5b54;margin:12px 2px 0}
