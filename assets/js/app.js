@@ -1,6 +1,6 @@
 (() => {
   const KEY='bdy_state_v3';
-  const AUX_KEYS=['bdy_game_complete','bdy_route','bdy_sync','bdy_timeline','bdy_local_seen'];
+  const AUX_KEYS=['bdy_game_complete','bdy_route','bdy_sync','bdy_timeline','bdy_local_seen','bdy_intro_seen'];
   const defaults={survey:false,surveyData:{},roster:false,p1:false,game:false,staff:false,monitor:false,incident:false,unlock:false,ending:false,visited:{}};
   const load=()=>{try{return Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||'{}'));}catch(e){return {...defaults}}};
   const save=s=>localStorage.setItem(KEY,JSON.stringify(s));
@@ -20,6 +20,28 @@
     if(confirm('这会清除本机恢复会话、已打开的系统状态和填写记录。确定重新开始吗？')) window.BDY.reset();
   }));
   window.addEventListener('storage',()=>{state=load()});
+
+  // opening: establish the relationship before handing control to the phone.
+  const intro=document.querySelector('#storyIntro');
+  if(intro){
+    const enter=document.querySelector('#storyEnter'), skip=document.querySelector('#storySkip');
+    const revealAll=()=>intro.classList.add('reveal-all');
+    const closeIntro=()=>{
+      localStorage.setItem('bdy_intro_seen','1');
+      intro.classList.add('leaving');
+      document.body.classList.remove('intro-pending');
+      setTimeout(()=>intro.remove(),520);
+    };
+    if(localStorage.getItem('bdy_intro_seen')==='1'){
+      intro.remove(); document.body.classList.remove('intro-pending');
+    }else{
+      requestAnimationFrame(()=>intro.classList.add('playing'));
+      enter?.addEventListener('click',closeIntro);
+      skip?.addEventListener('click',revealAll);
+      intro.addEventListener('click',e=>{if(e.target===intro)revealAll()});
+      document.addEventListener('keydown',e=>{if(!document.body.classList.contains('intro-pending'))return;if(e.key==='Escape')revealAll();if((e.key==='Enter'||e.key===' ')&&intro.classList.contains('reveal-all'))closeIntro()});
+    }
+  }
 
   // login forms, with page-specific errors
   const hookLogin=(id,check,patch,next,errorText)=>{
