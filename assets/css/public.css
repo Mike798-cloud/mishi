@@ -36,3 +36,19 @@ body.public{margin:0;background:#cfc5aa;background-image:repeating-linear-gradie
 
 /* final readability + lost & found evidence pass */
 .public-main p,.public-main td,.public-main th,.public-left li,.public-left .side-yellow,.public-news li,.public-board-links,.public-help-index td,.public-help-index th{font-size:max(11.5px,0.72rem)}.public-footer{font-size:10.5px}.lost-ledger{border-top:2px solid #173a67;margin-top:12px}.lost-entry{display:grid;grid-template-columns:190px minmax(0,1fr) 112px;gap:14px;padding:12px 0;border-bottom:1px solid #a59c82;align-items:start}.lost-entry img{display:block;width:190px;height:150px;object-fit:cover;border:1px solid #817965;background:#cfc8b4}.lost-entry h3{margin:3px 0 5px;font-size:14px;color:#173a67}.lost-entry p{margin:3px 0;font-size:11.5px;line-height:1.65}.lost-meta{font:10px Consolas,monospace;color:#6e6656}.lost-state{padding:7px 5px;border-left:4px solid #8f855e;background:#eee7cf;font-size:10.5px;line-height:1.6;text-align:center}.lost-state.pending{border-left-color:#b4891d}.lost-state.done{border-left-color:#547a63}.lost-state.clear{border-left-color:#777}@media(max-width:680px){.public-main p,.public-main td,.public-main th,.public-left li,.public-left .side-yellow,.public-news li,.public-board-links,.public-help-index td,.public-help-index th{font-size:13px}.lost-entry{grid-template-columns:110px minmax(0,1fr);gap:10px}.lost-entry img{width:110px;height:110px}.lost-state{grid-column:1/-1;text-align:left;border-left:0;border-top:3px solid #8f855e}.lost-meta{font-size:11px}.lost-entry p{font-size:13px}.lost-entry h3{font-size:15px}}
+
+
+/* final de-cardification pass: the homepage notice is part of the page, not a card inside a card */
+.public-bulletin-flat{border:0!important;border-top:2px solid #173a67!important;border-bottom:1px solid #8f866e!important;background:transparent!important;box-shadow:none!important;margin:0 0 10px!important}
+.public-bulletin-flat:before,.public-bulletin-flat:after{display:none!important}
+.public-bulletin-flat .public-bulletin-head{padding:6px 8px!important;background:#173a67!important}
+.public-bulletin-flat .public-bulletin-body{grid-template-columns:minmax(0,1fr) 230px!important;gap:0!important;padding:0!important;background:#fffdf4!important}
+.public-bulletin-flat .public-bulletin-copy{border:0!important;border-right:1px solid #a39980!important;background:transparent!important;box-shadow:none!important;padding:15px 18px 13px!important}
+.public-bulletin-flat .public-bulletin-side{background:#f0ead7!important;color:#2d302e!important;padding:15px 16px!important;min-height:0!important}
+.public-bulletin-flat .public-bulletin-side h2{color:#173a67!important;border-bottom:1px solid #b9ad8f!important;padding-bottom:5px!important}
+.public-bulletin-flat .public-bulletin-side p{color:#504b40!important;margin:6px 0!important}
+.public-bulletin-flat .bulletin-btn{background:#e0c22f!important;border:1px solid #8e7524!important;padding:7px 16px!important;font-size:12px!important}
+.public-bulletin-flat .public-bulletin-foot{border-top:1px dotted #a59a79!important;padding:7px 8px 9px!important}
+@media(max-width:760px){.public-bulletin-flat .public-bulletin-body{grid-template-columns:1fr!important}.public-bulletin-flat .public-bulletin-copy{border-right:0!important;border-bottom:1px solid #a39980!important}.public-bulletin-flat .public-bulletin-side{padding:12px 14px!important}}
+/* readable old-site typography without modernizing the visual language */
+.public-main,.public-left{font-size:12px}.public-main p,.public-help-index td,.public-help-index th,.public-data-table td,.public-data-table th,.public-list-table td,.public-list-table th,.forum-body p{font-size:12px!important;line-height:1.65}.public-left li,.public-left .side-yellow,.public-news li,.public-board-links,.public-note-strip{font-size:11px!important}.public-footer{font-size:10px!important}
