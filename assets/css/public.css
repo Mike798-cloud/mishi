@@ -5,3 +5,30 @@ body.public{margin:0;background:#cfc5aa;background-image:repeating-linear-gradie
 @media(max-width:760px){.public .site-shell{padding-left:5px;padding-right:5px}.public-brand,.public-nav{margin-left:-5px;margin-right:-5px}.public-logo{font-size:25px}.public-layout{display:block}.public-left{border-right:0;border-bottom:1px solid #8f866e}.public-left ul{display:flex;overflow:auto}.public-left li{white-space:nowrap;border-bottom:0;border-right:1px dotted #9b927c}.poster-rack{grid-template-columns:1fr}.forum-post,.forum-board-head{grid-template-columns:72px 1fr}.public-news li{grid-template-columns:70px 1fr}}
 
 .forum-sticker{max-width:420px;background:#eee7d1}.forum-sticker>div{padding:13px 15px;border:1px solid #7f7763;background:#f8f1d9;color:#2b2b25;font-family:Tahoma,"Microsoft YaHei",sans-serif}.sticker-receipt{display:grid;grid-template-columns:1fr auto;gap:5px 22px}.sticker-receipt b,.sticker-receipt em{grid-column:1/-1}.sticker-receipt b{padding-bottom:7px;border-bottom:1px dashed #777}.sticker-receipt em{font-style:normal;margin-top:4px;padding-top:7px;border-top:1px dashed #777;font-weight:700}.sticker-shoes{display:grid;gap:7px}.sticker-shoes b{font-size:14px;border-bottom:4px double #6b6555;padding-bottom:6px}.sticker-shoes span{padding:5px 7px;background:#fff9df;border-left:4px solid #b39a33}.forum-sticker figcaption{font-size:9px}.public-main,.forum-body{overflow-wrap:anywhere}
+
+
+/* public-home / visit-info refinement: no embedded poster-card composition */
+.public-bulletin{margin:0 0 12px;background:linear-gradient(#f7f0da,#f4ecd1);border:1px solid #8d8265;box-shadow:inset 0 0 0 1px #e9dfbe;position:relative}
+.public-bulletin:before,.public-bulletin:after{content:"";position:absolute;top:18px;bottom:18px;width:1px;background:#cec19b;opacity:.55}
+.public-bulletin:before{left:18px}.public-bulletin:after{right:18px}
+.public-bulletin-head,.public-bulletin-foot{position:relative;z-index:1;display:flex;justify-content:space-between;gap:14px;align-items:center;padding:9px 18px;background:#163b63;color:#f6f1dc}
+.public-bulletin-head span{font-size:10px;letter-spacing:.12em}.public-bulletin-head em{font-style:normal;color:#ffdd3e;font-weight:900;font-size:13px}
+.public-bulletin-body{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:22px;padding:22px 34px 30px}
+.public-bulletin-copy{border:1px solid #978a6d;background:#fffdf6;padding:18px 22px 14px;box-shadow:inset 0 0 0 1px #ddd1ad}
+.public-bulletin-copy h1{margin:0 0 8px;font-size:30px;line-height:1.05;color:#1c2c38}.public-bulletin-copy p{margin:0 0 16px;color:#5e5a4d;font-size:13px}
+.public-bulletin-list{margin:0;padding:0;list-style:none}.public-bulletin-list li{padding:7px 0 7px 17px;position:relative;font-size:14px;line-height:1.5;border-top:1px dotted #c7b995}.public-bulletin-list li:first-child{border-top:0}.public-bulletin-list li:before{content:"■";position:absolute;left:0;top:8px;font-size:9px;color:#3c4548}
+.public-bulletin-side{background:#123d61;color:#f1f4ea;padding:18px 18px 16px;display:flex;flex-direction:column;justify-content:space-between;min-height:230px}
+.public-bulletin-side h2{margin:0 0 14px!important;padding:0!important;background:none!important;border-left:0!important;color:#fffef2!important;font-size:13px!important;letter-spacing:.08em}
+.public-bulletin-side p{margin:0 0 10px;font-size:13px;line-height:1.85;color:#d8e1d8}
+.public-bulletin-side .bulletin-btn{display:inline-block;align-self:flex-start;margin-top:18px;padding:12px 34px;background:#d1b21f;color:#222;text-decoration:none;font-size:15px;font-weight:700;border:1px solid #8d7422;box-shadow:inset 0 0 0 1px #e8d675}
+.public-bulletin-foot{background:none;color:#6a6252;padding:12px 34px 18px;font-size:10px;align-items:flex-end}.public-bulletin-foot .foot-note{opacity:.82}.public-bulletin-foot .foot-stamp{padding:8px 12px;border:2px solid #b73a30;color:#b73a30;font-weight:900;transform:rotate(-2deg);background:#fff9ee}
+.public-note-strip{margin:8px 0 12px;padding:7px 10px;border-top:1px solid #a59a79;border-bottom:1px solid #a59a79;font-size:10px;color:#625c50}
+.public-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:8px}
+.figure-evidence{margin:0;background:#f3ecd7;padding:8px;border:1px solid #998e72}.figure-evidence img{display:block;width:100%;height:auto;border:1px solid #8f8a7c}.figure-evidence figcaption{font-size:9px;color:#5e594d;line-height:1.6;padding:6px 2px 0}
+.public-evidence-lead{font-size:10px;color:#615b4e;margin:4px 0 8px}
+.public-board-links{background:#f0ebda;border-width:1px 0;border-style:solid;border-color:#a49776}
+@media(max-width:760px){.public-bulletin-body{grid-template-columns:1fr;padding:16px 16px 20px;gap:12px}.public-bulletin-copy{padding:14px 16px 12px}.public-bulletin-copy h1{font-size:24px}.public-bulletin-copy p,.public-bulletin-list li,.public-bulletin-side p{font-size:12px}.public-bulletin-side{min-height:auto;padding:14px 15px}.public-bulletin-foot{padding:10px 16px 14px;flex-wrap:wrap}.public-evidence-grid{grid-template-columns:1fr}}
+
+
+/* archive poster shelf: flat contact-sheet treatment, not cards */
+.poster-rack{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #91866d;border-bottom:1px solid #91866d;background:#e8e0cb}.poster-item{margin:0;border:0!important;border-left:1px solid #91866d!important;background:transparent!important;padding:10px 9px!important}.poster-item:first-child{border-left:0!important}.poster-item img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;display:block;border:1px solid #817863}.poster-item p{margin:6px 1px 0;padding-top:5px;border-top:1px dotted #9a9078;font-size:9px;color:#5f584b}@media(max-width:760px){.poster-rack{grid-template-columns:1fr}.poster-item{border-left:0!important;border-top:1px solid #91866d!important}.poster-item:first-child{border-top:0!important}}
