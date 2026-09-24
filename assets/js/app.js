@@ -91,7 +91,7 @@
     const chainForm=document.querySelector('#camChainForm'), chainMsg=document.querySelector('#chainMsg');
     const solved=()=>{
       cams.forEach(c=>c.classList.toggle('selected',seq.includes(c.dataset.cam)));
-      if(out)out.textContent='事件链已建立：04 → 09 → 12 → 10 → 07 → 03\n最后一路是 B17 的退出请求。三路时钟仍需共同事件校准。';
+      if(out)out.textContent='六路记录的空间连续性可以成立：04 → 09 → 12 → 10 → 07 → 03\n原始时钟仍有漂移；下一步用共同事件校准三路时钟。';
       document.querySelector('#monitorNext')?.classList.remove('hidden');
       const sels=[...document.querySelectorAll('#camChainForm select')]; sels.forEach((x,i)=>x.value=seq[i]);
       if(chainMsg)chainMsg.textContent='链路核对通过。';

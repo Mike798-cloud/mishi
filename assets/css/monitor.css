@@ -9,3 +9,6 @@ body.monitor-theme,body.route-theme,body.sync-theme{background:#070a0d;color:#dc
 .cam:nth-child(3n+1) img{object-position:42% 50%}.cam:nth-child(3n+2) img{object-position:58% 45%}.cam:nth-child(3n) img{object-position:50% 60%}
 
 .route-event-ref{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:14px 0;padding:10px 12px;border:1px solid #35525d;background:#071014;font:12px Consolas,monospace}.route-event-ref span{color:#8fa5ad}.route-event-ref b{color:#d7e6e7;letter-spacing:.04em}.route-event-ref small{grid-column:1/-1;color:#70858d}
+
+/* final monitor readability floor */
+.monitor-theme .lead,.monitor-inspect p,.monitor-console-side,.console-output{font-size:12px}.cam-label,.cam-time{font-size:11px}@media(max-width:620px){.monitor-theme .lead,.monitor-inspect p,.monitor-console-side,.console-output{font-size:13px}}
