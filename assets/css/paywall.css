@@ -1,0 +1,27 @@
+/* Voluntary support overlay — deliberately plain, closer to a printed note than a modern card. */
+:root{--support-paper:#f2eee2;--support-ink:#24231f;--support-rule:#8d887c;--support-accent:#8c3a2f}
+.support-entry{appearance:none;border:0;background:none;color:inherit;font:inherit;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.training-menubar .support-entry{margin-left:auto;text-decoration:none;color:#1e2930;padding:0 3px}
+.training-menubar .support-entry:hover{text-decoration:underline}
+.support-overlay{position:fixed;z-index:12000;inset:0;background:rgba(9,10,11,.72);display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(1.5px)}
+.support-overlay.open{display:flex}
+.support-sheet{width:min(760px,100%);max-height:min(760px,calc(100dvh - 32px));overflow:auto;background:var(--support-paper);color:var(--support-ink);border:1px solid #59564f;box-shadow:0 24px 90px #0009;position:relative}
+.support-sheet:before{content:"";display:block;height:8px;background:repeating-linear-gradient(90deg,#4f4b43 0 1px,transparent 1px 7px);opacity:.28}
+.support-topline{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 18px 10px;border-bottom:1px solid var(--support-rule);font:11px/1.4 Consolas,"Microsoft YaHei",sans-serif;color:#5f5a51}
+.support-close{appearance:none;border:0;background:none;color:#4c4943;font:18px/1 monospace;padding:4px 6px;cursor:pointer}
+.support-body{display:grid;grid-template-columns:minmax(0,1fr) 238px;gap:26px;padding:24px 28px 20px}
+.support-copy h2{font:600 26px/1.25 "Songti SC","Noto Serif CJK SC","STSong",serif;margin:0 0 8px;letter-spacing:.02em}
+.support-kicker{font:12px/1.7 Arial,"Microsoft YaHei",sans-serif;color:var(--support-accent);font-weight:700;margin-bottom:16px}
+.support-copy p{font:14px/1.85 "Songti SC","Noto Serif CJK SC","STSong",serif;margin:0 0 1em;color:#37342e}
+.support-qr-wrap{border-left:1px solid #aaa397;padding-left:22px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.support-qr-wrap img{display:block;width:208px;height:208px;object-fit:contain;background:#fff;border:1px solid #aaa;padding:7px}
+.support-qr-caption{font:11px/1.65 Arial,"Microsoft YaHei",sans-serif;color:#686259;text-align:center;margin:9px 0 0}
+.support-qr-fail{display:none;width:208px;min-height:208px;border:1px dashed #9a9488;background:#e9e4d7;padding:18px;align-items:center;justify-content:center;text-align:center;font:12px/1.75 Arial,"Microsoft YaHei",sans-serif;color:#69635b}
+.support-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--support-rule);padding:14px 28px 18px}
+.support-actions button{appearance:none;border:1px solid #777168;background:#f8f4e8;color:#292722;padding:9px 15px;min-height:40px;cursor:pointer;border-radius:0;font:12px Arial,"Microsoft YaHei",sans-serif}
+.support-actions .support-done{background:#2f4a46;color:#fff;border-color:#233a36}
+.support-foot{margin-left:auto;font:10px/1.5 Arial,"Microsoft YaHei",sans-serif;color:#7a746b}
+.support-toast{position:fixed;z-index:12001;left:50%;bottom:26px;transform:translate(-50%,14px);opacity:0;pointer-events:none;background:#202221;color:#f1eee4;border:1px solid #777168;padding:9px 14px;font:12px/1.5 Arial,"Microsoft YaHei",sans-serif;transition:.22s ease}
+.support-toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:680px){.support-overlay{padding:12px}.support-sheet{max-height:calc(100dvh - 24px)}.support-body{grid-template-columns:1fr;gap:18px;padding:20px 18px 16px}.support-copy h2{font-size:23px}.support-copy p{font-size:14px;line-height:1.8}.support-qr-wrap{border-left:0;border-top:1px solid #aaa397;padding:18px 0 0}.support-qr-wrap img,.support-qr-fail{width:min(220px,72vw);height:min(220px,72vw);min-height:0}.support-actions{padding:13px 18px 16px}.support-actions button{flex:1 1 140px}.support-foot{width:100%;margin:2px 0 0;text-align:center}}
+@media(prefers-reduced-motion:reduce){.support-toast{transition:none}}
